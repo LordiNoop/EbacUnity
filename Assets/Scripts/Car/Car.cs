@@ -19,4 +19,18 @@ public class Car : MonoBehaviour
         var a = Instantiate(carPrefab);
         a.transform.position = Vector3.zero;
     }
+
+#if UNITY_EDITOR
+    [UnityEditor.MenuItem("Ebac/Car %t")]
+    public static void CreateCar2()
+    {
+        Car scriptInstance = FindObjectOfType<Car>();
+
+        if (scriptInstance != null && scriptInstance.carPrefab != null)
+        {
+            var a = Instantiate(scriptInstance.carPrefab);
+            a.transform.position = Vector3.zero;
+        }
+    }
+#endif
 }
